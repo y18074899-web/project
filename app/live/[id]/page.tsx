@@ -5,8 +5,8 @@ import { getSessionUser } from '@/lib/session'
 
 const UUID = /^[0-9a-f-]{36}$/i
 
-export default async function LivePage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params
+export default async function LivePage({ params }: { params: { id: string } }) {
+  const { id } = params
   if (!UUID.test(id)) notFound()
   const { supabase, user } = await getSessionUser()
 
